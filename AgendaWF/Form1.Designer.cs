@@ -38,9 +38,9 @@
             btAlterar = new Button();
             btLocalizar = new Button();
             btExcluir = new Button();
-            dataGridView1 = new DataGridView();
+            dgvDados = new DataGridView();
             lbDados = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDados).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -100,6 +100,7 @@
             btInserir.TabIndex = 6;
             btInserir.Text = "INSERIR";
             btInserir.UseVisualStyleBackColor = true;
+            btInserir.Click += btInserir_Click;
             // 
             // btAlterar
             // 
@@ -109,6 +110,7 @@
             btAlterar.TabIndex = 7;
             btAlterar.Text = "ALTERAR";
             btAlterar.UseVisualStyleBackColor = true;
+            btAlterar.Click += btAlterar_Click;
             // 
             // btLocalizar
             // 
@@ -119,6 +121,7 @@
             btLocalizar.TabIndex = 8;
             btLocalizar.Text = "LOCALIZAR";
             btLocalizar.UseVisualStyleBackColor = true;
+            btLocalizar.Click += btLocalizar_Click;
             // 
             // btExcluir
             // 
@@ -128,14 +131,15 @@
             btExcluir.TabIndex = 9;
             btExcluir.Text = "EXCLUIR";
             btExcluir.UseVisualStyleBackColor = true;
+            btExcluir.Click += btExcluir_Click;
             // 
-            // dataGridView1
+            // dgvDados
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 95);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(775, 240);
-            dataGridView1.TabIndex = 10;
+            dgvDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDados.Location = new Point(12, 95);
+            dgvDados.Name = "dgvDados";
+            dgvDados.Size = new Size(775, 240);
+            dgvDados.TabIndex = 10;
             // 
             // lbDados
             // 
@@ -152,7 +156,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(lbDados);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvDados);
             Controls.Add(btExcluir);
             Controls.Add(btLocalizar);
             Controls.Add(btAlterar);
@@ -165,7 +169,8 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "AGENDA-CRUD";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvDados).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,7 +187,7 @@
         private Button btAlterar;
         private Button btLocalizar;
         private Button btExcluir;
-        private DataGridView dataGridView1;
+        private DataGridView dgvDados;
         private Label lbDados;
     }
 }

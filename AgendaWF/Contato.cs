@@ -10,27 +10,11 @@ namespace AgendaWF
     {
 		private int id;
 
-		public int Id
-		{
-			get { return id; }
-			set { id = value; }
-		}
+		public int Id {	get; set; }
 
-		private String nome;
+        public string Nome { get; set; }
 
-		public String Nome
-		{
-			get { return nome; }
-			set { nome = value; }
-		}
+        public string Email { get; set; }
 
-		private String email;
-
-		public String Email
-		{
-			get { return email; }
-			set { email = value; }
-		}
-
-	}
+    }
 }

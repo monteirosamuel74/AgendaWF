@@ -41,7 +41,7 @@ namespace AgendaWF
             {
                 using(var cmd=DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Constatos(id int, nome VarChar(50), email VarChar(80))";
+                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Contatos(id int, nome VarChar(50), email VarChar(80))";
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -71,6 +71,46 @@ namespace AgendaWF
             }
         }
 
+        public static DataTable GetContatos(string nome)
+        {
+            SQLiteDataAdapter adapter = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var cmd = DbConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Contatos WHERE nome LIKE '%" + nome + "%'";
+                    adapter = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable GetEmails(string email)
+        {
+            SQLiteDataAdapter adapter = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var cmd = DbConnection().CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM Contatos WHERE email LIKE '%" + email + "%'";
+                    adapter = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
+                    adapter.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static DataTable GetContato(int id)
         {
             SQLiteDataAdapter adapter = null;
@@ -79,7 +119,7 @@ namespace AgendaWF
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Contato Where Id=" + id;
+                    cmd.CommandText = "SELECT * FROM Contatos Where Id=" + id;
                     adapter = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     adapter.Fill(dt);
                     return dt;
@@ -129,14 +169,14 @@ namespace AgendaWF
             }
         }
 
-        public static void Delete(Contato contato)
+        public static void Delete(int id)
         {
             try
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Contatos WHERE Id=@Id";
-                    cmd.Parameters.AddWithValue("@Id", contato.Id);
+                    cmd.Parameters.AddWithValue("@Id", id);
                     cmd.ExecuteNonQuery();
                 }
             }
